@@ -1,6 +1,6 @@
 import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { type Theme, useTheme } from '@/lib/theme';
-import { cn } from '@/lib/utils';
 
 const ORDER: readonly Theme[] = ['system', 'light', 'dark'];
 
@@ -22,18 +22,14 @@ export function ThemeToggle() {
 	const Icon = theme === 'light' ? SunIcon : theme === 'dark' ? MoonIcon : MonitorIcon;
 
 	return (
-		<button
-			type="button"
+		<Button
+			variant="outline"
+			size="icon"
 			aria-label={`${LABELS[theme]} (click for ${LABELS[upcoming].toLowerCase()})`}
 			title={LABELS[theme]}
 			onClick={() => setTheme(upcoming)}
-			className={cn(
-				'inline-flex size-9 items-center justify-center rounded-full',
-				'bg-background text-foreground/80 ring-1 ring-foreground/10',
-				'hover:bg-accent hover:text-foreground transition-colors',
-			)}
 		>
-			<Icon className="size-4" />
-		</button>
+			<Icon />
+		</Button>
 	);
 }
