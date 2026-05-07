@@ -1,0 +1,15 @@
+{
+	"assets": {
+		"directory": "./out",
+		"html_handling": "drop-trailing-slash",
+		"not_found_handling": "404-page",
+	},
+	"compatibility_date": "2026-05-07",
+	"name": "logos-frc-sh",
+	"route": {
+		"custom_domain": true,
+		"pattern": "logos.frc.sh",
+	},
+	"workers_dev": false,
+	"$schema": "./node_modules/wrangler/config-schema.json",
+}
