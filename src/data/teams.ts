@@ -1,6 +1,6 @@
 import { TEAM_LOGOS } from 'virtual:team-logos';
 
-export type ImageFormat = 'svg' | 'png' | 'jpg' | 'jpeg' | 'webp';
+type ImageFormat = 'svg' | 'png' | 'jpg' | 'jpeg' | 'webp';
 
 export type TeamLogo = {
 	number: number;

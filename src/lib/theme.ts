@@ -3,9 +3,9 @@ import type { ResolvedTheme } from '@/data/teams';
 
 export type Theme = 'light' | 'dark' | 'system';
 
-export const THEME_STORAGE_KEY = 'theme';
+const THEME_STORAGE_KEY = 'theme';
 
-export function isTheme(value: unknown): value is Theme {
+function isTheme(value: unknown): value is Theme {
 	return value === 'light' || value === 'dark' || value === 'system';
 }
 

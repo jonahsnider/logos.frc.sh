@@ -1,0 +1,26 @@
+name: autofix.ci # needed to securely identify the workflow
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    name: Autofix
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v6
+      - name: Setup Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+      - name: Apply lint and formatting fixes
+        run: vp check --fix
+      - name: Apply Knip fixes
+        run: vp exec knip --fix
+      - name: Run autofix.ci
+        uses: autofix-ci/action@v1
+        with:
+          commit-message: 'refactor: apply automatic fixes'
