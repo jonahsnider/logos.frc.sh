@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { resolveLogo, type ResolvedLogo, type TeamLogo } from '@/data/teams';
 import { SITE_URL } from '@/lib/constants';
-import { useTheme } from '@/lib/theme';
+import { useTheme } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 
 type LogoCardProps = {

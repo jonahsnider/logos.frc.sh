@@ -1,31 +1,14 @@
 import { TanStackDevtools } from '@tanstack/react-devtools';
-import { createRootRoute, HeadContent, Outlet, ScriptOnce, Scripts } from '@tanstack/react-router';
+import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { useEffect } from 'react';
 import { Toaster } from 'sonner';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
+import { ThemeProvider } from '@/components/theme-provider';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/constants';
 import { initPlausible } from '@/lib/plausible';
-import { useTheme } from '@/lib/theme';
 import appCss from '../styles.css?url';
-
-const themeScript = `
-(function() {
-  try {
-    var stored = window.localStorage.getItem('theme');
-    var theme;
-    if (stored === 'light' || stored === 'dark') {
-      theme = stored;
-    } else {
-      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    document.documentElement.classList.add(theme);
-  } catch (e) {
-    document.documentElement.classList.add('light');
-  }
-})();
-`;
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -61,7 +44,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				<HeadContent />
 			</head>
 			<body className="min-h-screen">
-				{children}
+				<ThemeProvider defaultTheme="system" storageKey="theme">
+					{children}
+				</ThemeProvider>
 				<TanStackDevtools
 					config={{ position: 'bottom-right' }}
 					plugins={[{ name: 'Tanstack Router', render: <TanStackRouterDevtoolsPanel /> }]}
@@ -73,15 +58,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 }
 
 function RootLayout() {
-	useTheme();
-
 	useEffect(() => {
 		initPlausible();
 	}, []);
 
 	return (
 		<>
-			<ScriptOnce>{themeScript}</ScriptOnce>
 			<div className="container mx-auto max-w-6xl">
 				<div className="flex flex-col gap-1 justify-start items-center min-h-screen p-4">
 					<Header />

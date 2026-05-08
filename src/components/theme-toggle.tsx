@@ -1,6 +1,6 @@
 import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { type Theme, useTheme } from '@/lib/theme';
+import { type Theme, useTheme } from '@/components/theme-provider';
 
 const ORDER: readonly Theme[] = ['system', 'light', 'dark'];
 
