@@ -14,10 +14,10 @@ const config = defineConfig({
 		useTabs: true,
 		singleQuote: true,
 		printWidth: 120,
-		ignorePatterns: ['src/components/ui/**/*', '**/routeTree.gen.ts', '.output/**/*', '.nitro/**/*', '.wrangler/**/*'],
+		ignorePatterns: ['src/components/**/*', '**/routeTree.gen.ts', '.output/**/*', '.nitro/**/*', '.wrangler/**/*'],
 	},
 	lint: {
-		ignorePatterns: ['src/components/ui/**/*', '**/routeTree.gen.ts', '.output/**/*', '.nitro/**/*', '.wrangler/**/*'],
+		ignorePatterns: ['src/components/**/*', '**/routeTree.gen.ts', '.output/**/*', '.nitro/**/*', '.wrangler/**/*'],
 	},
 	resolve: {
 		tsconfigPaths: true,

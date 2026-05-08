@@ -12,17 +12,13 @@ const config: KnipConfig = {
 
 	project: ['src/**/*.{ts,tsx,css}'],
 
+	ignore: ['src/components/**'],
+
 	ignoreDependencies: [
 		// Used in vite.config.ts via plugin
 		'@tanstack/router-plugin',
-		// Used by shadcn/ui components for styling variants
-		'class-variance-authority',
-		// Base primitive used by shadcn/ui components added via the shadcn CLI
-		'@base-ui/react',
 		// Validation library used by shadcn/ui components (e.g. forms)
 		'zod',
-		// CLI for adding/updating shadcn/ui components
-		'shadcn',
 		// Cloudflare Workers CLI used for deployment
 		'wrangler',
 	],
