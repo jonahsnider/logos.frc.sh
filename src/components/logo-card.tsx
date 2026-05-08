@@ -61,27 +61,32 @@ const TILE_CLASS: Record<ResolvedLogo['tile'], string> = {
 };
 
 export function LogoCard({ team }: LogoCardProps) {
-	const { resolvedTheme } = useTheme();
+	const { resolvedTheme, themeReady } = useTheme();
 	const resolved = resolveLogo(team, resolvedTheme);
 	const isSvg = resolved.format === 'svg';
 	const teamLabel = `Team ${team.number}`;
+	const themeDependent = team.light !== team.dark;
+	const visible = themeReady || !themeDependent;
 
 	return (
 		<Card className="group/logo-card flex-col gap-3 p-4 py-4">
 			<div
 				className={cn(
 					'relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl',
-					TILE_CLASS[resolved.tile],
+					visible ? TILE_CLASS[resolved.tile] : 'opacity-0',
+					themeDependent && 'transition-opacity duration-200',
 				)}
 			>
-				<Image
-					src={logoSrc(resolved)}
-					alt={teamLabel}
-					width={512}
-					aspectRatio={1}
-					layout="constrained"
-					className="max-h-[80%] max-w-[80%] object-contain"
-				/>
+				{visible && (
+					<Image
+						src={logoSrc(resolved)}
+						alt={teamLabel}
+						width={512}
+						aspectRatio={1}
+						layout="constrained"
+						className="max-h-[80%] max-w-[80%] object-contain"
+					/>
+				)}
 
 				<div className="pointer-events-none absolute inset-0 flex items-end justify-end gap-1.5 p-2 opacity-0 transition-opacity group-hover/logo-card:pointer-events-auto group-hover/logo-card:opacity-100 focus-within:pointer-events-auto focus-within:opacity-100">
 					{isSvg && (

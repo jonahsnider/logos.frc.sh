@@ -13,6 +13,7 @@ type ThemeProviderProps = {
 type ThemeProviderState = {
 	theme: Theme;
 	resolvedTheme: ResolvedTheme;
+	themeReady: boolean;
 	setTheme: (theme: Theme) => void;
 };
 
@@ -63,13 +64,8 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
 		if (!mounted || theme !== 'system') {
 			return;
 		}
-
 		const media = window.matchMedia('(prefers-color-scheme: dark)');
-		const onChange = () => {
-			const next = resolve('system');
-			applyTheme(next);
-			setResolvedTheme(next);
-		};
+		const onChange = () => setResolvedTheme(resolve('system'));
 		media.addEventListener('change', onChange);
 		return () => media.removeEventListener('change', onChange);
 	}, [theme, mounted]);
@@ -80,7 +76,7 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
 	};
 
 	return (
-		<ThemeProviderContext value={{ theme, resolvedTheme, setTheme }}>
+		<ThemeProviderContext value={{ theme, resolvedTheme, themeReady: mounted, setTheme }}>
 			<ScriptOnce>{getThemeScript(storageKey, defaultTheme)}</ScriptOnce>
 			{children}
 		</ThemeProviderContext>
