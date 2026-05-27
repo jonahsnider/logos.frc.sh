@@ -47,7 +47,7 @@
 		"typescript": "^6.0.0",
 		"vite": "npm:@voidzero-dev/vite-plus-core@latest",
 		"vite-plus": "latest",
-		"wrangler": "4.93.1"
+		"wrangler": "4.95.0"
 	},
 	"overrides": {
 		"vite": "npm:@voidzero-dev/vite-plus-core@latest",
