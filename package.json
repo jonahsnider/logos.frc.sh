@@ -44,7 +44,7 @@
 		"@types/react-dom": "^19.2.0",
 		"@vitejs/plugin-react": "^6.0.0",
 		"knip": "^6.12.1",
-		"typescript": "^6.0.0",
+		"typescript": "^7.0.0",
 		"vite": "npm:@voidzero-dev/vite-plus-core@latest",
 		"vite-plus": "latest",
 		"wrangler": "4.110.0"
