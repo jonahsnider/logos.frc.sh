@@ -39,7 +39,7 @@
 	},
 	"devDependencies": {
 		"@tanstack/devtools-vite": "^0.8.0",
-		"@types/node": "^22.10.2",
+		"@types/node": "^26.4.1",
 		"@types/react": "^19.2.0",
 		"@types/react-dom": "^19.2.0",
 		"@vitejs/plugin-react": "^6.0.0",
@@ -56,8 +56,8 @@
 	"devEngines": {
 		"runtime": {
 			"name": "node",
-			"version": "24.x",
-			"onFail": "download"
+			"version": "26.x",
+			"onFail": "warn"
 		}
 	},
 	"packageManager": "pnpm@12.2.1"
