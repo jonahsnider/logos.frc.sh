@@ -16,9 +16,10 @@ jobs:
         uses: voidzero-dev/setup-vp@v1.21.2
         with:
           cache: true
-      - name: Check
-        run: vp check
-      - name: Build
-        run: vp build
-      - name: Run Knip
-        run: vp exec knip
+      - parallel:
+          - name: Check
+            run: vp check
+          - name: Build
+            run: vp build
+          - name: Run Knip
+            run: vp exec knip
